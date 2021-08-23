@@ -1,0 +1,46 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                <span class="login100-form-title p-b-43">
+                    Acessar conta
+                </span>
+                <p class="mt-2 mb-4"> Para visualizar as recomendações de cursos da Eliza, preencha os campos abaixo.</p>
+                <div class="mt-4 wrap-input100 validate-input">
+                    <input [ngClass]="{'is-invalid': formLogin.get('email')?.status == 'INVALID' && formLogin.get('email').touched}" class="input100" type="e-mail" name="email" formControlName="email">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"> Digite seu e-mail aqui:</span>
+                </div>
+                <div *ngIf="formLogin.get('email')?.status == 'INVALID' && formLogin.get('email').touched">
+                    <app-msg-error message="campo e-mail é obrigatório."></app-msg-error>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <input [ngClass]="{'is-invalid': formLogin.get('password')?.status == 'INVALID' && formLogin.get('password').touched}" class="input100" type="password" name="pass" formControlName="password">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100">Digite sua senha aqui:</span>
+                </div>
+                <div *ngIf="formLogin.get('password')?.status == 'INVALID' && formLogin.get('password').touched">
+                    <app-msg-error message="campo senha é obrigatório."></app-msg-error>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button [disabled]="!formLogin.valid" class="btn-form login100-form-btn">
+                        Fazer Login
+                    </button>
+                </div>
+
+                <div class="mt-4 login100-form-social flex-c-m text-center">
+                    Ainda não possui cadastro?
+                    <a [routerLink]="['../register']">
+                        Cadastre-se
+                    </a>
+
+                    <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+            <div class="login100-more" style="background-image: url('../../../assets/images/banner/bg_authentication.png');">
+            </div>
+        </div>
+    </div>
+</div>

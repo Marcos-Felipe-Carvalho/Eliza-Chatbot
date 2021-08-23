@@ -1,0 +1,160 @@
+div {
+    background: #312747;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+header .logo {
+    position: relative;
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header nav {
+    position: relative;
+}
+
+header nav ul {
+    position: relative;
+    display: flex;
+}
+
+header nav ul li {
+    list-style: none;
+}
+
+header nav ul li a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    color: #ff0083;
+}
+
+section {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 100px;
+}
+
+section .content-box {
+    position: relative;
+    max-width: 600px;
+    z-index: 1000;
+}
+
+section .content-box h2 {
+    font-size: 50px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+section .content-box p {
+    margin-top: 15px;
+    text-align: justify;
+    line-height: 30px;
+    font-size: 18px;
+    color: #fff;
+}
+
+section .content-box a {
+    position: relative;
+    margin: 5px;
+    margin-top: 10px;
+    display: inline-block;
+    background: #ff0083;
+    color: #fff;
+    font-style: 20px;
+    letter-spacing: 2px;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 40px;
+}
+
+section .img-box img {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 100px;
+    z-index: 2;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    section {
+        flex-direction: column;
+        padding-top: 150px;
+        height: auto;
+    }
+    section .content-box {
+        max-width: 100%;
+    }
+    section .img-box img {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    header {
+        padding: 20px 50px;
+    }
+    section {
+        flex-direction: column;
+        padding: 120px 50px 100px;
+        height: auto;
+    }
+    section .content-box h2 {
+        font-size: 40px;
+    }
+    section .content-box p {
+        font-size: 16px;
+    }
+    section .content-box a {
+        position: relative;
+        margin-top: 10px;
+        display: inline-block;
+        background: #fff;
+        color: #ff0083;
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 10px 25px;
+        text-decoration: none;
+        border-radius: 40px;
+    }
+    section .content-box a {
+        position: relative;
+        margin-top: 10px;
+        display: inline-block;
+        background: #fff;
+        color: #ff0083;
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 10px 25px;
+        text-decoration: none;
+        border-radius: 40px;
+    }
+}
