@@ -33,7 +33,10 @@
                                 <span class="focus-input100"></span>
                                 <span class="label-input100">Digite sua senha aqui:</span>
                             </div>
-                            <div class="row" *ngIf="formRegister.get('password')?.status == 'INVALID' && formRegister.get('password').touched">
+                            <div class="row" *ngIf="formRegister.get('password').hasError('minlength') && formRegister.get('password').touched">
+                                <app-msg-error message="O campo senha deve conter no mínimo 8 caracteres"></app-msg-error>
+                            </div>
+                            <div class="row" *ngIf="formRegister.get('password').hasError('required')  && formRegister.get('password')?.status == 'INVALID' && formRegister.get('password').touched">
                                 <app-msg-error message="O campo senha é obrigatório."></app-msg-error>
                             </div>
                         </div>
@@ -61,17 +64,6 @@
                     <button [disabled]="!formRegister.valid" class="btn-form login100-form-btn">
                         Cadastrar-se
                     </button>
-                </div>
-
-                <div class="mt-4 login100-form-social flex-c-m text-center">
-                    Já é cadastrado?
-                    <a [routerLink]="['../login']">
-                        Fazer Login
-                    </a>
-
-                    <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
                 </div>
             </form>
         </div>
