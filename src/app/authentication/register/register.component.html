@@ -3,49 +3,71 @@
         <div class="wrap-login100">
             <div class="login100-more-register" style="background-image: url('../../../assets/images/banner/bg_authentication.png');">
             </div>
-            <form class="login100-form-register validate-form">
+            <form [formGroup]="formRegister" class="login100-form-register validate-form" (ngSubmit)="onSubmit()">
                 <span class="login100-form-title p-b-43">
-                         Criar conta
-                    </span>
+                    Criar conta
+                </span>
                 <p class="mt-2 mb-4">Para criar uma conta, preencha os campos abaixo.</p>
                 <div class="row">
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass">
+                    <div class="wrap-input100 validate-input">
+                        <input [ngClass]="{'is-invalid': formRegister.get('fullName')?.status == 'INVALID' && formRegister.get('fullName').touched}" formControlName="fullName" class="input100" type="text" name="fullName">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Digite seu nome completo:</span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass">
+                    <div class="row" *ngIf="formRegister.get('fullName')?.status == 'INVALID' && formRegister.get('fullName').touched">
+                        <app-msg-error message="campo nome completo é obrigatório."></app-msg-error>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                        <input [ngClass]="{'is-invalid': formRegister.get('email')?.status == 'INVALID' && formRegister.get('email').touched}" formControlName="email" class="input100" type="text" name="">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Digite seu endereço de e-mail:</span>
                     </div>
-                    <div class="col mr-3">
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" name="pass">
-                            <span class="focus-input100"></span>
-                            <span class="label-input100">Digite sua senha aqui:</span>
+                    <div *ngIf="formRegister.get('email')?.status == 'INVALID' && formRegister.get('email').touched">
+                        <app-msg-error message="O campo e-mail completo é obrigatório."></app-msg-error>
+                    </div>
+                    <div class="row">
+                        <div class="col mr-3">
+                            <div class="wrap-input100 validate-input">
+                                <input [ngClass]="{'is-invalid': formRegister.get('password')?.status == 'INVALID' && formRegister.get('password').touched}" formControlName="password" class="input100" type="password" name="password">
+                                <span class="focus-input100"></span>
+                                <span class="label-input100">Digite sua senha aqui:</span>
+                            </div>
+                            <div class="row" *ngIf="formRegister.get('password')?.status == 'INVALID' && formRegister.get('password').touched">
+                                <app-msg-error message="O campo senha é obrigatório."></app-msg-error>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="wrap-input100 validate-input">
+                                <input [ngClass]="{'is-invalid': formRegister.get('confirmPassword')?.status == 'INVALID' && formRegister.get('confirmPassword').touched}" formControlName="confirmPassword" class="input100" type="password" name="confirmPassword">
+                                <span class="focus-input100"></span>
+                                <span class="label-input100">Confirmar sua senha aqui:</span>
+                            </div>
+                            <div class="row" *ngIf="formRegister.get('confirmPassword')?.status == 'INVALID' && formRegister.get('confirmPassword').touched">
+                                <app-msg-error message="O campo confirmar senha é obrigatório."></app-msg-error>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+                <div class="row">
                     <div class="col">
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" name="pass">
-                            <span class="focus-input100"></span>
-                            <span class="label-input100">Confirmar sua senha aqui:</span>
+                        <div *ngIf="formRegister.get('confirmPassword').hasError('equalsTo') && formRegister.get('password').touched">
+                            <app-msg-error message="As senhas não coincidem"></app-msg-error>
                         </div>
                     </div>
                 </div>
-
                 <div class="container-login100-form-btn">
-                    <button class="btn-form login100-form-btn">
-                              Cadastrar-se
-                         </button>
+                    <button [disabled]="!formRegister.valid" class="btn-form login100-form-btn">
+                        Cadastrar-se
+                    </button>
                 </div>
 
                 <div class="mt-4 login100-form-social flex-c-m text-center">
                     Já é cadastrado?
                     <a [routerLink]="['../login']">
-                              Fazer Login
-                         </a>
+                        Fazer Login
+                    </a>
 
                     <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
                         <i class="fa fa-twitter" aria-hidden="true"></i>
