@@ -1,7 +1,7 @@
-<div class="limiter">
+<div [@animation-form-register]="stateFormRegister" class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-more-register" style="background-image: url('../../../assets/images/banner/bg_authentication.png');">
+            <div class="login100-more-register" style="background-image: url('../../../assets/images/banner/bg_authentication_register.png');">
             </div>
             <form [formGroup]="formRegister" class="login100-form-register validate-form" (ngSubmit)="onSubmit()">
                 <span class="login100-form-title p-b-43">
@@ -64,6 +64,12 @@
                     <button [disabled]="!formRegister.valid" class="btn-form login100-form-btn">
                         Cadastrar-se
                     </button>
+                </div>
+                <div class="mt-4 login100-form-social flex-c-m text-center">
+                    Já possui cadastro?
+                    <a [routerLink]="['../login']">
+                        Fazer login
+                    </a>
                 </div>
             </form>
         </div>
